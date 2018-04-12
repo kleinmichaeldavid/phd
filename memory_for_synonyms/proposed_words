@@ -4,7 +4,7 @@ spoiled	crisp	stale	fresh
 roof	ground	ceiling	floor
 fluffy	solid	soft	hard
 leave	appear	depart	arrive
-abstaining	inebriated	sober	drunk
+abstaining	tipsy	sober	drunk
 dull	pointy	blunt	sharp
 awful	positive	bad	good
 ascent	drop	rise	fall
@@ -17,15 +17,15 @@ coach	understand	teach	learn
 wealthy	bankrupt	rich	poor
 missing		lost	found
 slack	taut	loose	tight
-joy	discomfort	pleasure	pain
+joy		glee	grief
 	prior	future	past
-naïve	convicted	innocent	guilty
+naïve	sorry	innocent	guilty
 morning	evening	day	night
 above	shorter	higher	lower
 sob	giggle	cry	laugh
 ask	response	question	answer
 champion	deadbeat	winner	loser
-foremost	end	first	last
+foremost	end	start	stop
 earlier	later	before	after
 solitary	multiple	singular	plural
 younger	elder	junior	senior
@@ -37,7 +37,7 @@ tidy	messy	clean	dirty
 napping	alert	asleep	awake
 recall		remember	forget
 purchase		buy	sell
-belated	premature	late	early
+delayed	premature	late	early
 battle	truce	war	peace
 	base	top	bottom
 powerful	frail	strong	weak
@@ -49,11 +49,10 @@ packed	vacant	full	empty
 lust	despise	love	hate
 lengthy		long	short
 	youth	major	minor
-pal	rival	friend	enemy
+buddy	rival	friend	enemy
 beautiful	unattractive	pretty	ugly
 rear	fore	back	front
 additional	fewer	more	less
 correct	wrong	true	false
 sugary	bitter	sweet	sour
 grin	pout	smile	frown
-

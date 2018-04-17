@@ -2,7 +2,7 @@
 ## Code for any projects related to my Phd.
 
 ### twitter_ownership_language
-Project with Shaylene Nancekivell and Ori Friedman to study the use of ownership language on Twitter.  The notebook Twitter Study Code 1 - Find and Search Hashtags contains Python code to check trending hashtags on Twitter over the course of a day, search for and download tweets using each of those hashtags, and automatically generate pdfs with some examples of tweets and a word clouds so that human raters can rate whether each hashtag is related to a 'cause'.
+Project with Shaylene Nancekivell and Ori Friedman to study the use of ownership language on Twitter.  The notebook find_search_hashtag_looper.ipynb contains Python code to check trending hashtags on Twitter over the course of a day, search for and download tweets using each of those hashtags, and automatically generate pdfs with some examples of tweets and a word clouds so that human raters can rate whether each hashtag is related to a 'cause'.
 
 ### dissertation_data
 Anonymized raw data from experiments that are (will be) included in my dissertation, and R scripts used to analyse data from each experiment.

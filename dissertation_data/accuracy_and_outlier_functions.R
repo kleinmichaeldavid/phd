@@ -235,6 +235,7 @@ bar_plotter <- function(df,
                         between_types = c(),
                         within_order = NULL,
                         between_order = NULL,
+                        xgroups = NULL,
                         xlab = NULL, ylab = NULL,
                         yrange = NULL,
                         leg_title = NULL,
@@ -384,6 +385,8 @@ bar_plotter <- function(df,
   if(is.null(leg_title)) leg_title <- ""
   p <- p + guides(fill=guide_legend(title=leg_title))
   
+  # x groups
+  if(!is.null(xgroups)) p <- p + scale_x_discrete(labels = xgroups)
   
   if(!is.null(fill_colours)){
     if(!is.null(leg_labels)){

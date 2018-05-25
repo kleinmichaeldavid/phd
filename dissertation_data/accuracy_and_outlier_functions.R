@@ -594,4 +594,22 @@ get_actuals <- function(df, by, levels, columns){
   df
 }
 
+ttest <- function(in1,in2,paired = TRUE){
+  
+  model <- t.test(in1, in2, paired = paired)
+
+  df <- model$parameter
+  t <- sprintf('%.2f',abs(model$statistic))
+  p <- sprintf('%.3f',model$p.value) %>% substr(2,5)
+  se <- sprintf('%.1f',sd(in1 - in2) / sqrt(length(in1)))
+  sd1 <- sd(in1)
+  sd2 <- sd(in2)
+  r <- cor(in1, in2)
+  drm <- sprintf('%.2f', abs(model$estimate) / sqrt(sd1^2 + sd2^2 - 2*r*sd1*sd2) * sqrt(2*(1-r)))
+
+  print(paste('t(',df,') = ',t,', SE = ', se, ', p = ', p, ', drm = ', drm, sep = ''))
+  
+  c(df, t, se, p, drm)
+  
+}
 

@@ -501,6 +501,34 @@ match_distributions <- function(df, match_within, match_across,
         ratios[minimum[1],] <- rep(Inf, length(ratios[minimum[1],]))
         ratios[,minimum[2]] <- rep(Inf, length(ratios[,minimum[2]]))
       }
+    } else if (n_groups == 4){
+      lens <- list(length(matches[[1]]),length(matches[[2]]),length(matches[[3]]),length(matches[[4]]))
+      arrays <- list(array(rep(matches[[1]],each=1,times=lens[[2]]*lens[[3]]*lens[[4]]),
+                           dim = unlist(lens)),
+                     array(rep(matches[[2]],each=lens[[1]],times=lens[[3]]*lens[[4]]),
+                           dim = unlist(lens)),
+                     array(rep(matches[[3]],each=lens[[1]]*lens[[2]],times=lens[[4]]),
+                           dim = unlist(lens)),
+                     array(rep(matches[[4]],each=lens[[1]]*lens[[2]]*lens[[3]],times=1),
+                           dim = unlist(lens)))
+      
+      ratios <- (abs(arrays[[1]]-arrays[[2]]) + abs(arrays[[1]]-arrays[[3]]) + abs(arrays[[1]]-arrays[[4]]) +
+                   abs(arrays[[2]]-arrays[[3]]) + abs(arrays[[2]]-arrays[[4]]) + abs(arrays[[3]]-arrays[[4]])) /
+        (arrays[[1]]+arrays[[2]]+arrays[[3]]+arrays[[4]])
+      
+      ## now get the smallest triplets from the ratio array
+      matches_df <- data.frame(a = as.numeric(), b = as.numeric(), c = as.numeric(), d = as.numeric())
+      while(min(ratios) < proximity_cut_off){
+        ## find indices of the smallest values in the ratio matrix
+        minima <- which(ratios == min(ratios), arr.ind = TRUE)
+        minimum <- minima[sample(1:nrow(minima),1),] # pick randomly if more than one
+        matches_df <- rbind(matches_df, data.frame(a = minimum[1], b = minimum[2], c = minimum[3], d = minimum[4]))
+        ## remove the trials corresponding the the triplet from the array
+        ratios[minimum[1],,,] <- rep(Inf, length(ratios[minimum[1],,,]))
+        ratios[,minimum[2],,] <- rep(Inf, length(ratios[,minimum[2],,]))
+        ratios[,,minimum[3],] <- rep(Inf, length(ratios[,,minimum[3],]))
+        ratios[,,,minimum[4]] <- rep(Inf, length(ratios[,,,minimum[4]]))
+        }
     }
     
     counts <- nrow(matches_df)

@@ -128,7 +128,7 @@ outlier_trials <- function(df, variables, separators, cutoff=2.5){
 }
 
 
-outlier_subjects <- function(df, variables, true_separator, other_separators, cutoff=2.5){
+outlier_subjects <- function(df, variables, true_separator, other_separators, cutoff=2.5, only_conditions = NULL){
   
   ##########################################
   ##
@@ -160,6 +160,9 @@ outlier_subjects <- function(df, variables, true_separator, other_separators, cu
     } #else {
     #condition_means[[var]] <- condition_means[[var]] %>% spread(true_separator, mean)
     #}
+    
+    only_conditions <- c(true_separator, only_conditions)
+    if (!is.null(only_conditions)) condition_means[[var]] <- condition_means[[var]][,only_conditions]
     
     subject_mean_df <- data.frame(subject = condition_means[[var]][,true_separator],
                                   mean = rowMeans(data.frame(condition_means[[var]][,-1])),
